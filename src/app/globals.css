@@ -1,0 +1,314 @@
+/* Updated: 2025-11-28T17:22:47.560Z */
+/* Updated: 2025-11-28T17:10:46.589Z */
+/* Updated: 2025-11-28T17:10:33.358Z */
+/* Updated: 2025-11-28T17:05:58.913Z */
+/* Updated: 2025-11-28T17:04:07.727Z */
+/* Updated: 2025-10-23T00:42:23.987Z */
+/* Updated: 2025-10-18T06:18:18.182Z */
+/* Updated: 2025-10-18T06:15:26.061Z */
+/* Updated: 2025-10-18T06:13:41.823Z */
+/* Updated: 2025-10-18T06:04:48.705Z */
+/* Updated: 2025-10-18T05:47:55.692Z */
+/* Updated: 2025-10-18T05:44:23.613Z */
+/* Updated: 2025-10-18T05:42:26.895Z */
+/* Updated: 2025-10-18T04:01:05.307Z */
+/* Updated: 2025-10-17T17:13:43.800Z */
+/* Updated: 2025-10-17T17:13:11.514Z */
+/* Updated: 2025-10-17T16:43:06.561Z */
+/* Updated: 2025-10-17T15:57:58.682Z */
+/* Updated: 2025-10-08T09:23:08.465Z */
+/* Updated: 2025-10-06T06:35:28.437Z */
+/* Updated: 2025-10-06T06:15:03.196Z */
+/* Updated: 2025-10-06T06:09:32.498Z */
+/* Updated: 2025-10-06T06:08:55.504Z */
+/* Updated: 2025-10-06T06:07:50.070Z */
+/* Updated: 2025-10-06T06:07:20.857Z */
+/* Updated: 2025-10-06T05:48:28.984Z */
+/* Updated: 2025-10-06T05:41:58.157Z */
+/* Updated: 2025-10-03T04:00:57.404Z */
+/* Updated: 2025-10-03T04:00:49.026Z */
+/* Updated: 2025-09-28T01:49:25.505Z */
+/* Updated: 2025-09-27T12:50:54.351Z */
+/* Updated: 2025-09-27T12:42:29.601Z */
+/* Updated: 2025-09-24T09:34:18.050Z */
+/* Updated: 2025-09-24T06:55:52.874Z */
+/* Updated: 2025-09-24T00:02:35.293Z */
+/* Updated: 2025-09-23T21:39:35.186Z */
+/* Updated: 2025-09-21T16:18:43.381Z */
+/* Updated: 2025-09-20T21:49:26.658Z */
+/* Updated: 2025-09-20T21:48:45.072Z */
+/* Updated: 2025-09-20T20:09:55.940Z */
+/* Updated: 2025-09-20T07:54:58.993Z */
+/* Updated: 2025-09-20T07:49:10.627Z */
+/* Updated: 2025-09-20T07:07:00.466Z */
+/* Updated: 2025-09-20T06:44:41.059Z */
+/* Updated: 2025-09-20T00:21:11.299Z */
+/* Updated: 2025-09-19T23:39:51.962Z */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+
+  --color-card: #1a1a1a;
+  --color-card-foreground: #ffffff;
+
+  --color-popover: #1a1a1a;
+  --color-popover-foreground: #ffffff;
+
+  --color-primary: #00ff00;
+  --color-primary-foreground: #000000;
+
+  --color-secondary: #ff6600;
+  --color-secondary-foreground: #ffffff;
+
+  --color-muted: #333333;
+  --color-muted-foreground: #cccccc;
+
+  --color-accent: #1a1a1a;
+  --color-accent-foreground: #ffffff;
+
+  --color-destructive: #ff0000;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #333333;
+  --color-input: #1a1a1a;
+  --color-ring: #00ff00;
+
+  --color-chart-1: #e67e22;
+  --color-chart-2: #2d8659;
+  --color-chart-3: #1e3a5f;
+  --color-chart-4: #f1c40f;
+  --color-chart-5: #e74c3c;
+
+  --color-sidebar: #1a1a1a;
+  --color-sidebar-foreground: #ffffff;
+  --color-sidebar-primary: #00ff00;
+  --color-sidebar-primary-foreground: #000000;
+  --color-sidebar-accent: #333333;
+  --color-sidebar-accent-foreground: #ffffff;
+  --color-sidebar-border: #333333;
+  --color-sidebar-ring: #00ff00;
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes marquee-rtl {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --font-display: "Inter",
+  sans-serif;
+  --font-body: "Inter",
+  sans-serif;
+  --font-small: "Inter",
+  sans-serif;
+  --font-button: "Inter",
+  sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: #333333;
+  }
+}
+
+@layer utilities {
+  body {
+    font-family: var(--font-body);
+  }
+
+  .animate-marquee-rtl {
+    animation: marquee-rtl 30s linear infinite;
+  }
+
+  .animate-marquee-rtl:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2.5s infinite linear;
+  }
+}
+
+@layer base {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --card: #1a1a1a;
+    --card-foreground: #ffffff;
+    --popover: #1a1a1a;
+    --popover-foreground: #ffffff;
+    --primary: #00ff00;
+    --primary-foreground: #000000;
+    --secondary: #ff6600;
+    --secondary-foreground: #ffffff;
+    --muted: #333333;
+    --muted-foreground: #cccccc;
+    --accent: #1a1a1a;
+    --accent-foreground: #ffffff;
+    --destructive: #ff0000;
+    --destructive-foreground: #ffffff;
+    --border: #333333;
+    --input: #1a1a1a;
+    --ring: #00ff00;
+    --chart-1: #e67e22;
+    --chart-2: #2d8659;
+    --chart-3: #1e3a5f;
+    --chart-4: #f1c40f;
+    --chart-5: #e74c3c;
+    --radius: 0.5rem;
+    --sidebar-background: #1a1a1a;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #00ff00;
+    --sidebar-primary-foreground: #000000;
+    --sidebar-accent: #333333;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #333333;
+    --sidebar-ring: #00ff00;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  small {
+    font-family: var(--font-small);
+    font-size: 14px;
+  }
+
+  button {
+    font-family: var(--font-button);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}

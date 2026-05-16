@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1758325988588,
+      "tag": "0000_charming_alice",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1760717042496,
+      "tag": "0001_good_fenris",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1760760237684,
+      "tag": "0002_quiet_captain_stacy",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1764350198108,
+      "tag": "0003_new_logan",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1764382033281,
+      "tag": "0004_serious_dazzler",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1764382845093,
+      "tag": "0005_misty_big_bertha",
+      "breakpoints": true
+    }
+  ]
+}
