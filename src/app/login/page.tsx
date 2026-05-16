@@ -1,16 +1,16 @@
 // app/login/page.tsx
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-client";
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login } = useAuth();
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -21,14 +21,14 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    
+
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, rememberMe })
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, rememberMe }),
       });
-      
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -37,16 +37,12 @@ export default function LoginPage() {
         return;
       }
 
-      // Store data
       login(data.data, data.token);
-      
-      // Clear announcement flag
+
       localStorage.removeItem("announcement_last_seen");
-      
-      // Redirect to intended page or home
-      const redirectTo = searchParams.get('redirect') || '/';
+
+      const redirectTo = searchParams.get("redirect") || "/";
       router.push(redirectTo);
-      
     } catch (err) {
       console.error("Login error:", err);
       setError("Login failed. Please try again.");
@@ -58,25 +54,25 @@ export default function LoginPage() {
     <div className="container py-12">
       <div className="mx-auto w-full max-w-md rounded-lg border border-border bg-card p-6 shadow">
         <h1 className="mb-6 text-center text-2xl font-bold">Login</h1>
-        
-        {searchParams.get('expired') === 'true' && (
+
+        {searchParams.get("expired") === "true" && (
           <div className="mb-4 rounded-md border border-yellow-500/40 bg-yellow-500/10 p-3 text-sm">
             Your session has expired. Please login again.
           </div>
         )}
-        
-        {searchParams.get('registered') === 'true' && (
+
+        {searchParams.get("registered") === "true" && (
           <div className="mb-4 rounded-md border border-green-500/40 bg-green-500/10 p-3 text-sm">
             Account created successfully! Please login.
           </div>
         )}
-        
+
         {error && (
           <div className="mb-4 rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive-foreground">
             {error}
           </div>
         )}
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="mb-1 block text-sm">Email</label>
@@ -89,6 +85,7 @@ export default function LoginPage() {
               autoComplete="email"
             />
           </div>
+
           <div>
             <label className="mb-1 block text-sm">Password</label>
             <input
@@ -100,6 +97,7 @@ export default function LoginPage() {
               autoComplete="current-password"
             />
           </div>
+
           <div className="flex items-center justify-between">
             <label className="flex items-center gap-2 text-sm">
               <input
@@ -109,10 +107,15 @@ export default function LoginPage() {
               />
               Remember me
             </label>
-            <Link href="/register" className="text-sm text-primary underline">
+
+            <Link
+              href="/register"
+              className="text-sm text-primary underline"
+            >
               Need an account? Register
             </Link>
           </div>
+
           <button
             type="submit"
             disabled={loading}
@@ -123,5 +126,13 @@ export default function LoginPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="p-6">Loading...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }
